@@ -1,44 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <header><h1>SPLITTER</h1></header>
+    <main>
+      <section class="user-data">
+        <div
+          class="user-data__bill"
+          data-error="Can't be zero"
+          data-error-visible="false"
+        >
+          <label for="bill">Bill</label><br />
+          <i class="fa-solid fa-dollar-sign"></i
+          ><input
+            type="text"
+            name="bill"
+            class="input input--active"
+            id="bill"
+            value="0"
+            required
+          />
+        </div>
+        <span>Select Tip %</span>
+        <div class="user-data__select-tip">
+          <button type="button" class="btn btn--active">5%</button>
+          <button type="button" class="btn btn--active">10%</button>
+          <button type="button" class="btn btn--active">15%</button>
+          <button type="button" class="btn btn--active">25%</button>
+          <button type="button" class="btn btn--active">50%</button>
+          <input
+            type="text"
+            name="custom"
+            class="input input--active"
+            id="custom"
+            value="Custom"
+          />
+        </div>
+        <div
+          class="user-data__nbr-people"
+          data-error="Can't be zero"
+          data-error-visible="false"
+        >
+          <label for="nbr-people">Number of People</label><br />
+          <i class="fa-solid fa-user"></i
+          ><input
+            type="text"
+            name="nbr-people"
+            class="input input--active"
+            id="nbr-people"
+            value="0"
+            required
+          />
+        </div>
+      </section>
+      <section class="result">
+        <div class="reslut__amount">
+          <div>
+            <span>Tip Amount</span>
+            <span>$0.00</span>
+          </div>
+          <span>/ person</span>
+        </div>
+        <div class="reslut__amount">
+          <div>
+            <span>Total</span>
+            <span>$0.00</span>
+          </div>
+          <span>/ person</span>
+        </div>
+        <button type="button" class="btn btn--active btn--reset">Reset</button>
+      </section>
+    </main>
+  </body>
 </html>
