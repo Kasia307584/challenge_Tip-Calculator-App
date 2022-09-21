@@ -1,0 +1,99 @@
+:root {
+  --font-default: "Space Mono", monospace;
+  --primary: hsl(172, 67%, 45%);
+  --neutral-1: hsl(183, 100%, 15%);
+  --neutral-2: hsl(186, 14%, 43%);
+  --neutral-3: hsl(184, 14%, 56%);
+  --neutral-4: hsl(185, 41%, 84%);
+  --neutral-5: hsl(189, 41%, 97%);
+}
+* {
+  box-sizing: border-box; /* for better boxe's management */
+}
+
+/* || GENERAL - mobile */
+
+body {
+  color: var(--neutral-2);
+  width: 375px;
+  margin: auto;
+}
+body,
+input,
+button {
+  font-family: var(--font-default);
+  font-size: 24px;
+}
+header {
+  background-color: var(--neutral-4);
+  margin-bottom: -20px;
+}
+header > div {
+  width: 100px;
+  margin: auto;
+  padding: 1em;
+  padding-bottom: 2em;
+}
+h1 {
+  font-size: 26px;
+  margin: 0;
+}
+main {
+  background-color: var(--neutral-5);
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+}
+section {
+  padding: 1em;
+}
+input {
+  text-align: right;
+  background-color: var(--neutral-4);
+  color: var(--neutral-1);
+  border-style: none;
+}
+button,
+.result {
+  background-color: var(--neutral-1);
+  color: var(--neutral-5);
+}
+button,
+input[name="custom"] {
+  border-style: none;
+  padding: 0.3em;
+  width: 45%;
+  border-radius: 5%;
+  margin-bottom: 0.5em;
+}
+input[name="custom"] {
+  color: var(--neutral-2);
+}
+.result {
+  margin: 1em;
+  border-radius: 5%;
+}
+.btn-large {
+  width: 100%;
+  background-color: hsl(183.1, 100%, 19%);
+  color: var(--neutral-1);
+}
+
+/* || ACTIVE STATES - mobile */
+
+input:focus,
+input:hover {
+  outline: none;
+  border: 2px lightskyblue solid;
+  color: var(--neutral-1);
+}
+.btn-small:hover,
+.btn-large--active:hover {
+  background-color: var(--neutral-4);
+  color: var(--neutral-1);
+}
+/* classes .btn-small--active and .btn-large--active will be added via JS on event or condition */
+.btn-small--active,
+.btn-large--active {
+  background-color: var(--primary);
+  color: var(--neutral-1);
+}

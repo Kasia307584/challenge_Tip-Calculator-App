@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
       type="image/png"
@@ -22,56 +23,51 @@
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
   <body>
-    <header><h1>SPLITTER</h1></header>
+    <header>
+      <div>
+        <h1>SPLI</h1>
+        <h1>TTER</h1>
+      </div>
+    </header>
     <main>
       <section class="user-data">
-        <div
-          class="user-data__bill"
-          data-error="Can't be zero"
-          data-error-visible="false"
-        >
-          <label for="bill">Bill</label><br />
-          <i class="fa-solid fa-dollar-sign"></i
-          ><input
-            type="text"
-            name="bill"
-            class="input input--active"
-            id="bill"
-            value="0"
-            required
-          />
-        </div>
-        <span>Select Tip %</span>
-        <div class="user-data__select-tip">
-          <button type="button" class="btn btn--active">5%</button>
-          <button type="button" class="btn btn--active">10%</button>
-          <button type="button" class="btn btn--active">15%</button>
-          <button type="button" class="btn btn--active">25%</button>
-          <button type="button" class="btn btn--active">50%</button>
-          <input
-            type="text"
-            name="custom"
-            class="input input--active"
-            id="custom"
-            value="Custom"
-          />
-        </div>
-        <div
-          class="user-data__nbr-people"
-          data-error="Can't be zero"
-          data-error-visible="false"
-        >
-          <label for="nbr-people">Number of People</label><br />
-          <i class="fa-solid fa-user"></i
-          ><input
-            type="text"
-            name="nbr-people"
-            class="input input--active"
-            id="nbr-people"
-            value="0"
-            required
-          />
-        </div>
+        <form name="tip-data" action="">
+          <div
+            class="user-data__bill"
+            data-error="Can't be zero"
+            data-error-visible="false"
+          >
+            <label for="bill">Bill</label><br />
+            <i class="fa-solid fa-dollar-sign"></i
+            ><input type="text" name="bill" id="bill" value="0" required />
+          </div>
+          <div class="user-data__select-tip">
+            <span>Select Tip %</span>
+            <div class="user-data__select-tip--flex">
+              <button type="button" class="btn-small">5%</button>
+              <button type="button" class="btn-small">10%</button>
+              <button type="button" class="btn-small">15%</button>
+              <button type="button" class="btn-small">25%</button>
+              <button type="button" class="btn-small">50%</button>
+              <input type="text" name="custom" id="custom" value="Custom" />
+            </div>
+          </div>
+          <div
+            class="user-data__nbr-people"
+            data-error="Can't be zero"
+            data-error-visible="false"
+          >
+            <label for="nbr-people">Number of People</label><br />
+            <i class="fa-solid fa-user"></i
+            ><input
+              type="text"
+              name="nbr-people"
+              id="nbr-people"
+              value="0"
+              required
+            />
+          </div>
+        </form>
       </section>
       <section class="result">
         <div class="reslut__amount">
@@ -88,7 +84,7 @@
           </div>
           <span>/ person</span>
         </div>
-        <button type="button" class="btn btn--active btn--reset">Reset</button>
+        <button type="button" class="btn-large" disabled>RESET</button>
       </section>
     </main>
   </body>
