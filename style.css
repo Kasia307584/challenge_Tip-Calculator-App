@@ -15,7 +15,6 @@
 
 body {
   color: var(--neutral-2);
-  width: 375px;
   margin: auto;
 }
 body,
@@ -151,4 +150,38 @@ form > div:nth-child(3) {
 }
 .result > div {
   margin-top: 0.5em;
+}
+
+@media screen and (min-width: 769px) {
+  /* || GENERAL - desktop */
+
+  body {
+    background-color: var(--neutral-4);
+    width: 950px;
+    margin: auto;
+  }
+  main {
+    display: flex;
+  }
+  section {
+    width: 50%;
+  }
+  header {
+    margin-bottom: unset;
+    margin-top: 50px;
+  }
+
+  /* || USER DATA SECTION - desktop */
+
+  button,
+  input[name="custom"] {
+    width: 31%;
+  }
+
+  /* || RESULT SECTION - desktop */
+
+  .btn-large {
+    position: relative;
+    top: 4.5em;
+  }
 }
