@@ -40,17 +40,22 @@ h1 {
 }
 main {
   background-color: var(--neutral-5);
-  border-top-left-radius: 5%;
-  border-top-right-radius: 5%;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 section {
   padding: 1em;
 }
+label,
+span {
+  font-size: 18px;
+}
 input {
   text-align: right;
   background-color: var(--neutral-4);
-  color: var(--neutral-1);
+  color: var(--neutral-2);
   border-style: none;
+  border-radius: 5px;
 }
 button,
 .result {
@@ -61,21 +66,22 @@ button,
 input[name="custom"] {
   border-style: none;
   padding: 0.3em;
-  width: 45%;
-  border-radius: 5%;
-  margin-bottom: 0.5em;
+  width: 47%;
+  border-radius: 5px;
+  margin-bottom: 0.6em;
 }
 input[name="custom"] {
   color: var(--neutral-2);
 }
 .result {
   margin: 1em;
-  border-radius: 5%;
+  border-radius: 15px;
 }
 .btn-large {
   width: 100%;
   background-color: hsl(183.1, 100%, 19%);
   color: var(--neutral-1);
+  margin-top: 1.5em;
 }
 
 /* || ACTIVE STATES - mobile */
@@ -96,4 +102,53 @@ input:hover {
 .btn-large--active {
   background-color: var(--primary);
   color: var(--neutral-1);
+}
+
+/* || USER DATA SECTION - mobile */
+
+form > div:nth-child(2),
+form > div:nth-child(3) {
+  margin-top: 1em;
+}
+.user-data__select-tip--flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 0.3em;
+}
+.fa-solid {
+  position: relative;
+  left: 20px;
+  top: 10px;
+  z-index: 1;
+}
+.input-standard {
+  position: relative;
+  width: 100%;
+  bottom: 40px;
+  padding: 0.3em;
+  margin-top: 0.3em;
+}
+.user-data__bill,
+.user-data__nbr-people {
+  margin-bottom: -40px;
+}
+
+/* || RESULT SECTION - mobile */
+
+.result > div > div > span:nth-child(2) {
+  color: var(--primary);
+  float: right;
+  font-size: 38px;
+}
+.result > div > span {
+  color: var(--neutral-3);
+  font-size: 14px;
+}
+.result > div > div {
+  margin-bottom: -10px;
+  margin-top: 0.5em;
+}
+.result > div {
+  margin-top: 0.5em;
 }
