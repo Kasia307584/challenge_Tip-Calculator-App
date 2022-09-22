@@ -13,7 +13,11 @@
 
 /* || GENERAL - mobile */
 
+html {
+  background-color: var(--neutral-5);
+}
 body {
+  background-color: var(--neutral-4);
   color: var(--neutral-2);
   margin: auto;
 }
@@ -23,15 +27,10 @@ button {
   font-family: var(--font-default);
   font-size: 24px;
 }
-header {
-  background-color: var(--neutral-4);
-  margin-bottom: -20px;
-}
-header > div {
-  width: 100px;
+header > img {
+  display: block;
   margin: auto;
-  padding: 1em;
-  padding-bottom: 2em;
+  padding: 2em;
 }
 h1 {
   font-size: 26px;
@@ -52,7 +51,7 @@ span {
 input {
   text-align: right;
   background-color: var(--neutral-4);
-  color: var(--neutral-2);
+  color: var(--neutral-3);
   border-style: none;
   border-radius: 5px;
 }
@@ -88,7 +87,7 @@ input[name="custom"] {
 input:focus,
 input:hover {
   outline: none;
-  border: 2px lightskyblue solid;
+  border: 2px var(--primary) solid;
   color: var(--neutral-1);
 }
 .btn-small:hover,
@@ -120,6 +119,8 @@ form > div:nth-child(3) {
   left: 20px;
   top: 10px;
   z-index: 1;
+  font-size: 18px;
+  color: var(--neutral-3);
 }
 .input-standard {
   position: relative;
@@ -154,9 +155,10 @@ form > div:nth-child(3) {
 
 @media screen and (min-width: 769px) {
   /* || GENERAL - desktop */
-
-  body {
+  html {
     background-color: var(--neutral-4);
+  }
+  body {
     width: 950px;
     margin: auto;
   }
