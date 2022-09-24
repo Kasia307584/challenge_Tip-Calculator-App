@@ -50,7 +50,7 @@ span {
 }
 input {
   text-align: right;
-  background-color: var(--neutral-4);
+  background-color: hsl(183.5, 39.5%, 91.6%);
   color: var(--neutral-3);
   border-style: none;
   border-radius: 5px;
@@ -70,6 +70,7 @@ input[name="custom"] {
 }
 input[name="custom"] {
   color: var(--neutral-2);
+  text-align: center;
 }
 .result {
   margin: 1em;
@@ -86,9 +87,9 @@ input[name="custom"] {
 
 input:focus,
 input:hover {
-  outline: none;
-  border: 2px var(--primary) solid;
+  outline: 2px var(--primary) solid;
   color: var(--neutral-1);
+  text-align: right;
 }
 .btn-small:hover,
 .btn-large--active:hover {
@@ -104,9 +105,11 @@ input:hover {
 
 /* || USER DATA SECTION - mobile */
 
-form > div:nth-child(2),
+form > div {
+  margin-top: 0.8em;
+}
 form > div:nth-child(3) {
-  margin-top: 1em;
+  margin-top: 1.5em;
 }
 .user-data__select-tip--flex {
   display: flex;
@@ -131,7 +134,7 @@ form > div:nth-child(3) {
 }
 .user-data__bill,
 .user-data__nbr-people {
-  margin-bottom: -40px;
+  margin-bottom: -30px;
 }
 
 /* || RESULT SECTION - mobile */
@@ -153,6 +156,26 @@ form > div:nth-child(3) {
   margin-top: 0.5em;
 }
 
+/* || DATA ERRORS */
+
+div[data-error]::before {
+  content: attr(data-error);
+  font-size: 12px;
+  color: #e54858;
+  display: block;
+  margin-bottom: -23px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+div[data-error-visible="true"]::before {
+  opacity: 1;
+}
+div[data-error-visible="true"] .input-standard {
+  outline: 2px solid #e54858;
+}
+
 @media screen and (min-width: 769px) {
   /* || GENERAL - desktop */
   html {
@@ -164,6 +187,8 @@ form > div:nth-child(3) {
   }
   main {
     display: flex;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
   }
   section {
     width: 50%;
