@@ -37,11 +37,12 @@
             <label for="bill">Bill</label><br />
             <i class="fa-solid fa-dollar-sign"></i
             ><input
-              type="text"
+              type="number"
               name="bill"
               class="input-standard"
               id="bill"
               value="0"
+              min="1"
               required
             />
           </div>
@@ -64,11 +65,12 @@
             <label for="nbr-people">Number of People</label><br />
             <i class="fa-solid fa-user"></i
             ><input
-              type="text"
+              type="number"
               name="nbr-people"
               class="input-standard"
               id="nbr-people"
               value="0"
+              min="1"
               required
             />
           </div>
@@ -92,5 +94,6 @@
         <button type="button" class="btn-large" disabled>RESET</button>
       </section>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>

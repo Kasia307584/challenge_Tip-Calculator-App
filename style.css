@@ -102,6 +102,10 @@ input:hover {
   background-color: var(--primary);
   color: var(--neutral-1);
 }
+.btn-small--active:hover {
+  background-color: var(--primary);
+  color: var(--neutral-1);
+}
 
 /* || USER DATA SECTION - mobile */
 
