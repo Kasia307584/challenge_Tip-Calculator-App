@@ -68,7 +68,8 @@ input[name="custom"] {
   border-radius: 5px;
   margin-bottom: 0.6em;
 }
-input[name="custom"] {
+/* .input-custom is less specific than input[name="custom"] so as I need to override it by applying another class later on, I use .input-custom instead of input[name="custom"] */
+.input-custom {
   color: var(--neutral-2);
   text-align: center;
 }
