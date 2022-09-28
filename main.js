@@ -3,6 +3,9 @@ const inputCustom = document.querySelector("#custom");
 const inputNbrPeople = document.querySelector("#nbr-people");
 const btnPercentage = document.querySelectorAll(".btn-small");
 const btnReset = document.querySelector(".btn-large");
+const result = document.querySelectorAll(
+  ".result > div > div > span:nth-child(2)"
+);
 
 // empty custom input when clicked
 inputCustom.addEventListener("click", () => {
@@ -21,6 +24,7 @@ const checkValidity = (inputField) => {
 // function which reads the input value
 const readValue = (event) => {
   let value = event.currentTarget.value;
+  value = Number.parseInt(value, 10);
   return value;
 };
 
@@ -33,24 +37,36 @@ inputBill.addEventListener("blur", (event) => {
   inputBillValue = readValue(event);
   countTip();
   total();
+  if (countTip()) {
+    result[0].textContent = "$" + countTip().toFixed(2);
+    result[1].textContent = "$" + total().toFixed(2);
+  }
 });
 inputNbrPeople.addEventListener("blur", (event) => {
   checkValidity(inputNbrPeople);
   inputNbrPeopleValue = readValue(event);
   countTip();
   total();
+  if (countTip()) {
+    result[0].textContent = "$" + countTip().toFixed(2);
+    result[1].textContent = "$" + total().toFixed(2);
+  }
 });
 inputCustom.addEventListener("blur", (event) => {
   if (event.currentTarget.value === "") {
     event.currentTarget.value = "Custom";
   } else {
-    inputCustomValue = readValue(event);
+    inputCustomValue = readValue(event) / 100;
     inputCustom.classList.add("btn-small--active");
     selected = event.currentTarget;
     btnPercentage.forEach((btn) => btn.classList.remove("btn-small--active"));
     percentageConverted = null;
     countTip();
     total();
+    if (countTip()) {
+      result[0].textContent = "$" + countTip().toFixed(2);
+      result[1].textContent = "$" + total().toFixed(2);
+    }
   }
 });
 
@@ -72,6 +88,10 @@ const applyPercentage = (e) => {
     inputCustomValue = null;
     countTip();
     total();
+    if (countTip()) {
+      result[0].textContent = "$" + countTip().toFixed(2);
+      result[1].textContent = "$" + total().toFixed(2);
+    }
   }
 };
 
@@ -82,16 +102,21 @@ btnPercentage.forEach((btn) => {
 
 // function which counts tip amount per person
 const countTip = () => {
-  const billConverted = Number.parseInt(inputBillValue, 10);
-  const nbrPeopleConverted = Number.parseInt(inputNbrPeopleValue, 10);
-  const customConverted = Number.parseInt(inputCustomValue, 10) / 100;
-  return (
-    (billConverted / nbrPeopleConverted) *
-    (customConverted ? customConverted : percentageConverted)
-  );
+  if (
+    inputBillValue &&
+    inputNbrPeopleValue &&
+    (inputCustomValue || percentageConverted)
+  ) {
+    return (
+      (inputBillValue / inputNbrPeopleValue) *
+      (inputCustomValue ? inputCustomValue : percentageConverted)
+    );
+  }
 };
 
 // function which counts total amount per person
 const total = () => {
-  return inputBillValue / inputNbrPeopleValue + countTip();
+  if (countTip()) {
+    return inputBillValue / inputNbrPeopleValue + countTip();
+  }
 };
