@@ -6,6 +6,7 @@ const btnReset = document.querySelector(".btn-large");
 const result = document.querySelectorAll(
   ".result > div > div > span:nth-child(2)"
 );
+const form = document.querySelector("form");
 
 // empty custom input when clicked
 inputCustom.addEventListener("click", () => {
@@ -59,7 +60,7 @@ inputCustom.addEventListener("blur", (event) => {
     inputCustomValue = readValue(event) / 100;
     inputCustom.classList.add("btn-small--active");
     selected = event.currentTarget;
-    btnPercentage.forEach((btn) => btn.classList.remove("btn-small--active"));
+    clearButtons();
     percentageConverted = null;
     countTip();
     total();
@@ -117,6 +118,27 @@ const countTip = () => {
 // function which counts total amount per person
 const total = () => {
   if (countTip()) {
+    btnReset.removeAttribute("disabled");
+    btnReset.classList.add("btn-large--active");
     return inputBillValue / inputNbrPeopleValue + countTip();
   }
+};
+
+// reset all data after clicking on the reset button
+btnReset.addEventListener("click", () => {
+  form.reset();
+  clearButtons();
+  inputCustom.classList.remove("btn-small--active");
+  result.forEach((r) => (r.textContent = "$0.00"));
+  btnReset.setAttribute("disabled", "disabled");
+  inputBillValue = null;
+  inputNbrPeopleValue = null;
+  inputCustomValue = null;
+  percentageConverted = null;
+});
+
+// fonction which removes color from buttons
+const clearButtons = () => {
+  btnPercentage.forEach((btn) => btn.classList.remove("btn-small--active"));
+  btnReset.classList.remove("btn-large--active");
 };
