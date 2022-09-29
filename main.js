@@ -8,34 +8,55 @@ const result = document.querySelectorAll(
 );
 const form = document.querySelector("form");
 
-// empty custom input when clicked
-inputCustom.addEventListener("click", () => {
-  inputCustom.value = "";
-});
+let inputBillValue;
+let inputNbrPeopleValue;
+let inputCustomValue;
+let btnPercentageValue;
+
+let selected = null; // selected element among small buttons and custom's input
+
+// function which empties input field
+const emptyInput = (input) => (input.value = "");
+
+// empty imput field when clicked
+inputCustom.addEventListener("click", () => emptyInput(inputCustom));
+inputBill.addEventListener("click", () => emptyInput(inputBill));
+inputNbrPeople.addEventListener("click", () => emptyInput(inputNbrPeople));
 
 // function which displays error message when input field non valid
 const checkValidity = (inputField) => {
   if (!inputField.validity.valid) {
     inputField.parentElement.setAttribute("data-error-visible", "true");
   } else {
-    inputField.parentElement.setAttribute("data-error-visible", "false"); // setAttribute utilisé ici car data-error-visible est un attribut HTML non standardisé
+    inputField.parentElement.setAttribute("data-error-visible", "false");
   }
 };
 
-// function which reads the input value
-const readValue = (event) => {
+// function which reads and converts the input value
+const readInputValue = (event) => {
   let value = event.currentTarget.value;
   value = Number.parseInt(value, 10);
   return value;
 };
 
-let inputBillValue;
-let inputNbrPeopleValue;
-let inputCustomValue;
-// display error message (when needed) and read input value when inputs loose focus
+// function which reads and converts the button value
+const readBtnValue = (event) => {
+  let value = event.currentTarget.textContent;
+  let indexP = value.lastIndexOf("%");
+  value = value.slice(0, indexP);
+  value = Number.parseInt(value) / 100;
+  return value;
+};
+
+// function which removes active color from small buttons
+const clearButtons = () => {
+  btnPercentage.forEach((btn) => btn.classList.remove("btn-small--active"));
+};
+
+// display error message (when needed) and read input value when input loses focus
 inputBill.addEventListener("blur", (event) => {
   checkValidity(inputBill);
-  inputBillValue = readValue(event);
+  inputBillValue = readInputValue(event);
   countTip();
   total();
   if (countTip()) {
@@ -45,7 +66,7 @@ inputBill.addEventListener("blur", (event) => {
 });
 inputNbrPeople.addEventListener("blur", (event) => {
   checkValidity(inputNbrPeople);
-  inputNbrPeopleValue = readValue(event);
+  inputNbrPeopleValue = readInputValue(event);
   countTip();
   total();
   if (countTip()) {
@@ -54,14 +75,15 @@ inputNbrPeople.addEventListener("blur", (event) => {
   }
 });
 inputCustom.addEventListener("blur", (event) => {
-  if (event.currentTarget.value === "") {
-    event.currentTarget.value = "Custom";
+  if (inputCustom.value === "" || inputCustom.value === "0") {
+    inputCustom.value = "Custom";
+    inputCustom.classList.remove("btn-small--active");
   } else {
-    inputCustomValue = readValue(event) / 100;
+    inputCustomValue = readInputValue(event) / 100;
     inputCustom.classList.add("btn-small--active");
     selected = event.currentTarget;
     clearButtons();
-    percentageConverted = null;
+    btnPercentageValue = null;
     countTip();
     total();
     if (countTip()) {
@@ -72,20 +94,15 @@ inputCustom.addEventListener("blur", (event) => {
 });
 
 // function which toggles button's colors and reads percentage chosen
-let selected = null;
-let percentageConverted;
 const applyPercentage = (e) => {
   selected?.classList.remove("btn-small--active");
   if (selected === e.currentTarget) {
     selected = null;
   } else {
-    e.currentTarget.classList.add("btn-small--active");
-    inputCustom.value = "Custom";
     selected = e.currentTarget;
-    buttonValue = selected.textContent;
-    let indexP = buttonValue.lastIndexOf("%");
-    percentageConverted = buttonValue.slice(0, indexP);
-    percentageConverted = Number.parseInt(percentageConverted) / 100;
+    selected.classList.add("btn-small--active");
+    inputCustom.value = "Custom";
+    btnPercentageValue = readBtnValue(e);
     inputCustomValue = null;
     countTip();
     total();
@@ -106,11 +123,11 @@ const countTip = () => {
   if (
     inputBillValue &&
     inputNbrPeopleValue &&
-    (inputCustomValue || percentageConverted)
+    (inputCustomValue || btnPercentageValue)
   ) {
     return (
       (inputBillValue / inputNbrPeopleValue) *
-      (inputCustomValue ? inputCustomValue : percentageConverted)
+      (inputCustomValue ? inputCustomValue : btnPercentageValue)
     );
   }
 };
@@ -129,16 +146,11 @@ btnReset.addEventListener("click", () => {
   form.reset();
   clearButtons();
   inputCustom.classList.remove("btn-small--active");
+  btnReset.classList.remove("btn-large--active");
   result.forEach((r) => (r.textContent = "$0.00"));
   btnReset.setAttribute("disabled", "disabled");
   inputBillValue = null;
   inputNbrPeopleValue = null;
   inputCustomValue = null;
-  percentageConverted = null;
+  btnPercentageValue = null;
 });
-
-// fonction which removes color from buttons
-const clearButtons = () => {
-  btnPercentage.forEach((btn) => btn.classList.remove("btn-small--active"));
-  btnReset.classList.remove("btn-large--active");
-};
