@@ -20,86 +20,97 @@
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
       rel="stylesheet"
     />
-    <title>Frontend Mentor | Tip calculator app</title>
+    <title>Tip calculator app</title>
   </head>
   <body>
-    <header>
-      <img src="./images/logo.svg" />
-    </header>
     <main>
-      <section class="user-data">
-        <form name="tip-data" action="">
-          <div
-            class="user-data__bill"
-            data-error="Can't be zero"
-            data-error-visible="false"
-          >
-            <label for="bill">Bill</label><br />
-            <i class="fa-solid fa-dollar-sign"></i
-            ><input
-              type="number"
-              name="bill"
-              class="input-standard"
-              id="bill"
-              value="0"
-              min="1"
-              required
-            />
-          </div>
-          <div class="user-data__select-tip">
-            <span>Select Tip %</span>
-            <div class="user-data__select-tip--flex">
-              <button type="button" class="btn-small">5%</button>
-              <button type="button" class="btn-small">10%</button>
-              <button type="button" class="btn-small">15%</button>
-              <button type="button" class="btn-small">25%</button>
-              <button type="button" class="btn-small">50%</button>
-              <input
-                type="text"
-                name="custom"
-                class="input-custom"
-                id="custom"
-                value="Custom"
+      <header>
+        <img src="./images/logo.svg" alt="Splitter logo" />
+      </header>
+      <article>
+        <section class="user-data">
+          <form name="tip-data">
+            <div
+              class="tip-data__bill"
+              data-error="Can't be zero"
+              data-error-visible="false"
+            >
+              <label for="bill">Bill</label><br />
+              <i class="fa-solid fa-dollar-sign"></i
+              ><input
+                type="number"
+                name="bill"
+                class="input-standard"
+                id="bill"
+                value="0"
+                min="1"
+                required
               />
             </div>
-          </div>
-          <div
-            class="user-data__nbr-people"
-            data-error="Can't be zero"
-            data-error-visible="false"
-          >
-            <label for="nbr-people">Number of People</label><br />
-            <i class="fa-solid fa-user"></i
-            ><input
-              type="number"
-              name="nbr-people"
-              class="input-standard"
-              id="nbr-people"
-              value="0"
-              min="1"
-              required
-            />
-          </div>
-        </form>
-      </section>
-      <section class="result">
-        <div>
+            <div class="tip-data__select-tip">
+              <span>Select Tip %</span>
+              <div class="tip-data__select-tip--flex">
+                <button type="button" class="btn-small">5%</button>
+                <button type="button" class="btn-small">10%</button>
+                <button type="button" class="btn-small">15%</button>
+                <button type="button" class="btn-small">25%</button>
+                <button type="button" class="btn-small">50%</button>
+                <input
+                  type="text"
+                  name="custom"
+                  class="input-custom"
+                  id="custom"
+                  value="Custom"
+                />
+              </div>
+            </div>
+            <div
+              class="tip-data__nbr-people"
+              data-error="Can't be zero"
+              data-error-visible="false"
+            >
+              <label for="nbr-people">Number of People</label><br />
+              <i class="fa-solid fa-user"></i
+              ><input
+                type="number"
+                name="nbr-people"
+                class="input-standard"
+                id="nbr-people"
+                value="0"
+                min="1"
+                required
+              />
+            </div>
+          </form>
+        </section>
+        <section class="result">
           <div>
-            <span>Tip Amount</span>
-            <span>$0.00</span>
+            <div>
+              <span>Tip Amount</span>
+              <span>$0.00</span>
+            </div>
+            <span>/ person</span>
           </div>
-          <span>/ person</span>
-        </div>
-        <div>
           <div>
-            <span>Total</span>
-            <span>$0.00</span>
+            <div>
+              <span>Total</span>
+              <span>$0.00</span>
+            </div>
+            <span>/ person</span>
           </div>
-          <span>/ person</span>
-        </div>
-        <button type="button" class="btn-large" disabled>RESET</button>
-      </section>
+          <button type="button" class="btn-large" disabled>RESET</button>
+        </section>
+      </article>
     </main>
+    <footer>
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://www.frontendmentor.io/profile/Kasia307584"
+        >Katarzyna Zurek</a
+      >.
+    </footer>
     <script src="main.js"></script>
   </body>
 </html>

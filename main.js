@@ -38,7 +38,12 @@ const readInputValue = (eCurrTarget) => {
   value = Number.parseInt(value, 10);
   if (eCurrTarget === inputBill) inputBillValue = value;
   if (eCurrTarget === inputNbrPeople) inputNbrPeopleValue = value;
-  if (eCurrTarget === inputCustom) inputCustomValue = value / 100;
+  if (eCurrTarget === inputCustom) {
+    inputCustomValue = value / 100;
+    if (!inputCustom.value.includes("%")) {
+      inputCustom.value += "%";
+    }
+  }
 };
 
 // function which reads and converts the button value
